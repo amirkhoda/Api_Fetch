@@ -25,11 +25,28 @@ function Data(props) {
 
     const arr = data.map((data, index) => {
         
-        if (minIndex <= (data.id) && (data.id) <= (maxIndex)) {
+       
+        if (searchTerm == data.id) {
+            return (
+                <Col sm = "4">
+                <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem',minHeight:'300px',maxHeight:'500'}}>
+                <Card.Header>Header</Card.Header>
+                <Card.Body>
+                    <Card.Title>{data.body}</Card.Title>
+                    <Card.Text>
+                    </Card.Text>
+                </Card.Body>
+
+            </Card>
+            </Col>
+            )
+
+        }
+        if (searchTerm == "") {
 
             return (
                 <Col sm = "4">
-                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem',display:'flex', flexWrap:'wrap', justifyContent:'space-between' }}>
+                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem',minHeight:'300px',maxHeight:'500'}}>
                     <Card.Header>Header</Card.Header>
                     <Card.Body>
                         <Card.Title>{data.body}</Card.Title>
@@ -40,16 +57,6 @@ function Data(props) {
                 </Card>
                 </Col>
                 
-            )
-
-        }
-        if (searchTerm == data.id) {
-            return (
-                <tr>
-                    <td>{data.id}</td>
-                    <td>{data.title}</td>
-                    <td>{data.body}</td>
-                </tr>
             )
 
         }
@@ -78,6 +85,9 @@ function Data(props) {
                                 placeholder="Search"
                                 className="me-2"
                                 aria-label="Search"
+                                onChange={(event) => {
+                                    setSearchTerm((event.target.value));
+                                }}
                             />
                             <Button variant="outline-warning">Search</Button>
                         </Form>
