@@ -5,6 +5,7 @@ import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactst
 import { faHeart, faEdit } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Footer from './Footer';
 
 function Data(props) {
     const [data, setData] = useState([])
@@ -119,7 +120,7 @@ function Data(props) {
                 </Container>
 
             </Navbar>
-            <Jumbotron style={{ textAlign: "center", backgroundColor: "#BAB9B9" }}>
+            <Jumbotron style={{ textAlign: "center", backgroundColor: "#949494" }}>
                 <h1 className="display-3">Hello, world!</h1>
                 <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
                 <hr className="my-2" />
@@ -152,6 +153,7 @@ function Data(props) {
                     {arr}
                 </Row>
             </Container>
+            <Footer/>
 
 
 
