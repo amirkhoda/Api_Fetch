@@ -2,11 +2,22 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
 import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faHeart, faEdit } from "@fortawesome/free-solid-svg-icons";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Data(props) {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+
+
+    function MouseEnter(event) {
+        event.target.style.color = '#ea4c89';
+      }
+      function MouseLeave(event){
+        event.target.style.color="#BAB9B9";
+      }
+      
 
 
     useEffect(() => {
@@ -28,26 +39,7 @@ function Data(props) {
         if (searchTerm == data.id) {
             return (
                 <Col sm="4">
-                <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '320px', maxHeight: '500' }}>
-                    <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
-                    <CardTitle>ID: {data.id}</CardTitle>
-                    <Card.Body>
-                        <Card.Text>
-                            {data.body}
-                        </Card.Text>
-                    </Card.Body>
-                    <CardFooter style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>salaam</CardFooter>
-
-                </Card>
-            </Col>
-            )
-
-        }
-        if (searchTerm == "") {
-
-            return (
-                <Col sm="4">
-                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '320px', maxHeight: '500' }}>
+                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '340px', maxHeight: '500' }}>
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
@@ -55,8 +47,36 @@ function Data(props) {
                                 {data.body}
                             </Card.Text>
                         </Card.Body>
-                        <CardFooter style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>salaam</CardFooter>
-                        <FontAwesomeIcon icon="fa-solid fa-heart" />
+                        <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
+                            salaam
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}   icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
+                        </CardFooter>
+
+                    </Card>
+                </Col>
+            )
+
+        }
+        if (searchTerm == "") {
+
+            return (
+                <Col sm="4">
+                    <Card className="mt-5 ms-5 col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '340px', maxHeight: '500' }}>
+                        <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
+                        <CardTitle>ID: {data.id}</CardTitle>
+                        <Card.Body>
+                            <Card.Text>
+                                {data.body}
+                            </Card.Text>
+                        </Card.Body>
+                        <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
+                            salaam
+                          
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}   icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
+                                
+                        </CardFooter>
 
                     </Card>
                 </Col>
@@ -99,20 +119,20 @@ function Data(props) {
                 </Container>
 
             </Navbar>
-            <Jumbotron style={{textAlign:"center",backgroundColor:"#BAB9B9"}}>
+            <Jumbotron style={{ textAlign: "center", backgroundColor: "#BAB9B9" }}>
                 <h1 className="display-3">Hello, world!</h1>
                 <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
                 <hr className="my-2" />
                 <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
                 <p className="lead">
-                    <Button className="mb-3" style={{backgroundColor:"#ea4c89",border:"none"}}>Learn More</Button>
+                    <Button className="mb-3" style={{ backgroundColor: "#ea4c89", border: "none" }}>Learn More</Button>
                 </p>
             </Jumbotron>
 
-           
-                
-                <h1 className="mt-5 text-center">use axios with react js</h1>
-                {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
+
+
+            <h1 className="mt-5 text-center">use axios with react js</h1>
+            {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -127,14 +147,14 @@ function Data(props) {
 
 
 
-                <Container>
-                    <Row>
-                        {arr}
-                    </Row>
-                </Container>
+            <Container>
+                <Row>
+                    {arr}
+                </Row>
+            </Container>
 
 
-            
+
         </body>
     )
 }
