@@ -3,23 +3,23 @@ import React, { useEffect, useState } from 'react'
 import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
 import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
 import { faHeart, faEdit } from "@fortawesome/free-solid-svg-icons";
-
+import EdiText from 'react-editext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from './Footer';
+import ParticleComponent from './ParticleComponent';
 
 function Data(props) {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
-
     function MouseEnter(event) {
         event.target.style.color = '#ea4c89';
-      }
-      function MouseLeave(event){
-        event.target.style.color="#BAB9B9";
-      }
-      
+    }
+    function MouseLeave(event) {
+        event.target.style.color = "#BAB9B9";
+    }
 
+  
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -40,21 +40,24 @@ function Data(props) {
         if (searchTerm == data.id) {
             return (
                 <Col sm="4">
+
                     <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '340px', maxHeight: '500' }}>
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-                            <Card.Text>
+                            <EdiText>
                                 {data.body}
-                            </Card.Text>
+
+                            </EdiText>
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
                             <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}   icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
                         </CardFooter>
 
                     </Card>
+
                 </Col>
             )
 
@@ -67,16 +70,17 @@ function Data(props) {
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-                            <Card.Text>
+                            <CardTitle>
                                 {data.body}
-                            </Card.Text>
+                            </CardTitle>
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
-                          
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}   icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
-                                
+                            
+                                <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}  ></FontAwesomeIcon>
+                            
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
+
                         </CardFooter>
 
                     </Card>
@@ -92,48 +96,56 @@ function Data(props) {
 
     return (
         <body>
-            <Navbar className="navbar-dark bg-dark" bg="light" expand="lg">
-                <Container>
-                    <Navbar.Brand href="#home" className="navbar-warning" style={{ color: '#ea4c89' }}>Api_Fetch</Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" variant="outline-warning" />
-                    <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Nav.Link href="#home">Home</Nav.Link>
-                            <Nav.Link href="#link">Setting</Nav.Link>
-                            <Nav.Link href="#about">About</Nav.Link>
+            <ParticleComponent />
+            <div style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                width: "100%",
+                height: "100%"
+            }}>
+                <Navbar className="navbar-dark bg-dark" bg="far" expand="lg">
+                    <Container>
+                        <Navbar.Brand href="#home" className="navbar-warning" style={{ color: '#ea4c89' }}>Api_Fetch</Navbar.Brand>
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" variant="outline-warning" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="me-auto">
+                                <Nav.Link href="#home">Home</Nav.Link>
+                                <Nav.Link href="#link">Setting</Nav.Link>
+                                <Nav.Link href="#about">About</Nav.Link>
 
 
-                        </Nav>
-                        <Form className="d-flex">
-                            <FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                                onChange={(event) => {
-                                    setSearchTerm((event.target.value));
-                                }}
-                            />
-                            <Button style={{ backgroundColor: '#ea4c89', border: 'none' }}>Search</Button>
-                        </Form>
-                    </Navbar.Collapse>
-                </Container>
+                            </Nav>
+                            <Form className="d-flex">
+                                <FormControl
+                                    type="search"
+                                    placeholder="Search"
+                                    className="me-2"
+                                    aria-label="Search"
+                                    onChange={(event) => {
+                                        setSearchTerm((event.target.value));
+                                    }}
+                                />
 
-            </Navbar>
-            <Jumbotron style={{ textAlign: "center", backgroundColor: "#949494" }}>
-                <h1 className="display-3">Hello, world!</h1>
-                <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
-                <hr className="my-2" />
-                <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-                <p className="lead">
-                    <Button className="mb-3" style={{ backgroundColor: "#ea4c89", border: "none" }}>Learn More</Button>
-                </p>
-            </Jumbotron>
+                                <Button style={{ border: 'none', backgroundColor: "#ea4c89" }}>Search</Button>
+                            </Form>
+                        </Navbar.Collapse>
+                    </Container>
+
+                </Navbar>
+                <Jumbotron style={{ textAlign: "center", backgroundColor: "#BAB9B9" }}>
+
+                    <h1 className="display-3">Hello, world!</h1>
+                    <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
+                    <hr className="my-2" />
+                    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                    <p className="lead">
+                        <Button className="mb-3" style={{ backgroundColor: "#ea4c89", border: "none" }}>Learn More</Button>
+                    </p>
+                </Jumbotron>
 
 
-
-            <h1 className="mt-5 text-center">use axios with react js</h1>
-            {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
+                {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
@@ -148,12 +160,15 @@ function Data(props) {
 
 
 
-            <Container>
-                <Row>
-                    {arr}
-                </Row>
-            </Container>
-            <Footer/>
+                <Container>
+                    <Row>
+                        {arr}
+                    </Row>
+                </Container>
+                <Footer />
+            </div>
+
+
 
 
 

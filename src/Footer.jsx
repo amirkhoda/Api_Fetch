@@ -64,7 +64,7 @@ function Footer() {
       </form>
     </section>
 
-    <section className="mb-4">
+    <section className="mb-4 " style={{color:"white"}}>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
         repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
