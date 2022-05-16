@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
 import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
-import { faHeart, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faEdit, faDharmachakra, faBlackboard } from "@fortawesome/free-solid-svg-icons";
 import EdiText from 'react-editext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from './Footer';
@@ -12,6 +12,7 @@ function Data(props) {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
+
     function MouseEnter(event) {
         event.target.style.color = '#ea4c89';
     }
@@ -19,7 +20,9 @@ function Data(props) {
         event.target.style.color = "#BAB9B9";
     }
 
-  
+    const onSave = val => {
+        console.log('Edited Value -> ', val)
+    }
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -36,24 +39,25 @@ function Data(props) {
 
     const arr = data.map((data, index) => {
 
-
         if (searchTerm == data.id) {
             return (
                 <Col sm="4">
 
-                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '340px', maxHeight: '500' }}>
+                    <Card className="mt-5 d-flex d-md-flex col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '380px', maxHeight: '500' }}>
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
+
                             <EdiText>
                                 {data.body}
 
                             </EdiText>
+
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }}></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }} ></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
                         </CardFooter>
 
                     </Card>
@@ -66,19 +70,32 @@ function Data(props) {
 
             return (
                 <Col sm="4">
-                    <Card className="mt-5 ms-5 col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '340px', maxHeight: '500' }}>
+                    <Card className="mt-5 ms-5 col-lg-6 mb-4 " bg="dark" text="white" border="dark" style={{ width: '18rem', minHeight: '380px', maxHeight: '500' }}>
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-                            <CardTitle>
-                                {data.body}
-                            </CardTitle>
+                            <EdiText
+                            
+                                viewContainerClassName='my-custom-view-wrapper'
+                                type='textarea'
+                                inputProps={{
+                                    
+                                    rows: 8
+                                }}
+                                saveButtonContent='Apply'
+                                cancelButtonContent={<strong>Cancel</strong>}
+                                editButtonProps="edit"
+                                
+                                
+                                value={data.body}
+                                onSave={onSave}
+                            />
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
-                            
-                                <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}  ></FontAwesomeIcon>
-                            
+
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}   ></FontAwesomeIcon>
+
                             <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
 
                         </CardFooter>
