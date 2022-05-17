@@ -36,7 +36,7 @@ function Data(props) {
             }).catch(err => console.log(err))
     }, [])
 
-   
+
 
 
 
@@ -163,11 +163,6 @@ function Data(props) {
 
 
 
-                <Routes>
-                    <Route path="/about" element={<About />} />
-
-                </Routes>
-
                 <Jumbotron style={{ textAlign: "center", backgroundColor: "#BAB9B9" }}>
 
                     <h1 className="display-3">Hello, world!</h1>
@@ -194,13 +189,22 @@ function Data(props) {
                     </tbody>
                 </table> */}
 
-                
+
                 <Container>
-                    <Row>
-                        {arr}
-                     
-                    </Row>
-                   
+
+                    <Routes>
+                        <Route path="/" element={<>
+                            <Row>
+                                {arr}
+
+                            </Row>
+                        </>}/>
+                    </Routes>
+
+                    <Routes>
+                        <Route path="/about" element={<About />} />
+                    </Routes>
+
 
                 </Container>
 
