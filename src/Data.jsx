@@ -3,10 +3,11 @@ import React, { useEffect, useState } from 'react'
 import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
 import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
 import { faHeart, faEdit, faDharmachakra, faBlackboard } from "@fortawesome/free-solid-svg-icons";
-import EdiText from 'react-editext'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from './Footer';
 import ParticleComponent from './ParticleComponent';
+import { EditText, EditTextarea } from 'react-edit-text';
+import 'react-edit-text/dist/index.css';
 
 function Data(props) {
     const [data, setData] = useState([])
@@ -47,11 +48,15 @@ function Data(props) {
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-
-                            <EdiText>
-                                {data.body}
-
-                            </EdiText>
+                        <EditTextarea
+                                name='description'
+                                rows={10}
+                                style={{ paddingTop: 0 }}
+                                column={10}
+                                style={{ fontSize: '16px' ,backgroundColor:"dark"}}
+                                defaultValue={data.body}
+                                
+                            />
 
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
@@ -74,21 +79,14 @@ function Data(props) {
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-                            <EdiText
-                            
-                                viewContainerClassName='my-custom-view-wrapper'
-                                type='textarea'
-                                inputProps={{
-                                    
-                                    rows: 8
-                                }}
-                                saveButtonContent='Apply'
-                                cancelButtonContent={<strong>Cancel</strong>}
-                                editButtonProps="edit"
+                            <EditTextarea
+                                name='description'
+                                rows={10}
+                                style={{ fontSize: '16px'}}
+                                defaultValue={data.body}
+                                editButtonContent
+                                showEditButton
                                 
-                                
-                                value={data.body}
-                                onSave={onSave}
                             />
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
