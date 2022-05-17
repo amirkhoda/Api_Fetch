@@ -2,12 +2,17 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
 import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
-import { faHeart, faEdit, faDharmachakra, faBlackboard } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from './Footer';
 import ParticleComponent from './ParticleComponent';
 import { EditText, EditTextarea } from 'react-edit-text';
 import 'react-edit-text/dist/index.css';
+import About from './About';
+import { Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 
 function Data(props) {
     const [data, setData] = useState([])
@@ -21,9 +26,7 @@ function Data(props) {
         event.target.style.color = "#BAB9B9";
     }
 
-    const onSave = val => {
-        console.log('Edited Value -> ', val)
-    }
+
 
     useEffect(() => {
         axios.get('https://jsonplaceholder.typicode.com/posts')
@@ -33,6 +36,7 @@ function Data(props) {
             }).catch(err => console.log(err))
     }, [])
 
+   
 
 
 
@@ -48,21 +52,21 @@ function Data(props) {
                         <Card.Header style={{ border: "#BAB9B9", color: "#D283A1", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderTopStyle: "none", textAlign: "left" }}>UserId: {data.userId}</Card.Header>
                         <CardTitle>ID: {data.id}</CardTitle>
                         <Card.Body>
-                        <EditTextarea
+                            <EditTextarea
                                 name='description'
                                 rows={10}
                                 style={{ paddingTop: 0 }}
                                 column={10}
-                                style={{ fontSize: '16px' ,backgroundColor:"dark"}}
+                                style={{ fontSize: '16px', backgroundColor: "dark" }}
                                 defaultValue={data.body}
-                                
+
                             />
 
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
                             <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }} ></FontAwesomeIcon>
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEye} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
                         </CardFooter>
 
                     </Card>
@@ -82,19 +86,18 @@ function Data(props) {
                             <EditTextarea
                                 name='description'
                                 rows={10}
-                                style={{ fontSize: '16px'}}
+                                style={{ fontSize: '16px' }}
                                 defaultValue={data.body}
                                 editButtonContent
                                 showEditButton
-                                
+
                             />
                         </Card.Body>
                         <CardFooter style={{ border: "#BAB9B9", color: "#BAB9B9", borderStyle: "solid", borderRightStyle: "none", borderLeftStyle: "none", borderBottomStyle: "none", textAlign: "left" }}>
                             salaam
 
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}   ></FontAwesomeIcon>
-
-                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEdit} style={{ marginLeft: "13px" }} ></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faHeart} style={{ marginLeft: "10rem" }}></FontAwesomeIcon>
+                            <FontAwesomeIcon onMouseEnter={MouseEnter} onMouseLeave={MouseLeave} icon={faEye} style={{ marginLeft: "10px" }} ></FontAwesomeIcon>
 
                         </CardFooter>
 
@@ -119,16 +122,25 @@ function Data(props) {
                 width: "100%",
                 height: "100%"
             }}>
+
                 <Navbar className="navbar-dark bg-dark" bg="far" expand="lg">
                     <Container>
                         <Navbar.Brand href="#home" className="navbar-warning" style={{ color: '#ea4c89' }}>Api_Fetch</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" variant="outline-warning" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
-                                <Nav.Link href="#home">Home</Nav.Link>
-                                <Nav.Link href="#link">Setting</Nav.Link>
-                                <Nav.Link href="#about">About</Nav.Link>
 
+                                <Nav.Link>
+                                    <Link to="/home">Home</Link>
+                                </Nav.Link>
+
+                                <Nav.Link >
+                                    <Link to="/setting">Setting</Link>
+                                </Nav.Link>
+
+                                <Nav.Link>
+                                    <Link to="/about">About</Link>
+                                </Nav.Link>
 
                             </Nav>
                             <Form className="d-flex">
@@ -148,6 +160,14 @@ function Data(props) {
                     </Container>
 
                 </Navbar>
+
+
+
+                <Routes>
+                    <Route path="/about" element={<About />} />
+
+                </Routes>
+
                 <Jumbotron style={{ textAlign: "center", backgroundColor: "#BAB9B9" }}>
 
                     <h1 className="display-3">Hello, world!</h1>
@@ -158,6 +178,7 @@ function Data(props) {
                         <Button className="mb-3" style={{ backgroundColor: "#ea4c89", border: "none" }}>Learn More</Button>
                     </p>
                 </Jumbotron>
+
 
 
                 {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
@@ -173,15 +194,19 @@ function Data(props) {
                     </tbody>
                 </table> */}
 
-
-
+                
                 <Container>
                     <Row>
                         {arr}
+                     
                     </Row>
+                   
+
                 </Container>
+
                 <Footer />
             </div>
+
 
 
 
