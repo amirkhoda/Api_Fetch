@@ -131,15 +131,15 @@ function Data(props) {
                             <Nav className="me-auto">
 
                                 <Nav.Link>
-                                    <Link to="/home">Home</Link>
+                                    <Link to="/home" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Home</Link>
                                 </Nav.Link>
 
                                 <Nav.Link >
-                                    <Link to="/setting">Setting</Link>
+                                    <Link to="/setting" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Setting</Link>
                                 </Nav.Link>
 
                                 <Nav.Link>
-                                    <Link to="/about">About</Link>
+                                    <Link to="/about" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>About</Link>
                                 </Nav.Link>
 
                             </Nav>
@@ -176,24 +176,13 @@ function Data(props) {
 
 
 
-                {/*  <table class="table table-dark w-50 ms-auto me-auto mt-5 ">
-                    <thead>
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Title</th>
-                            <th scope="col">Body</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {arr}
-                    </tbody>
-                </table> */}
+               
 
 
                 <Container>
 
                     <Routes>
-                        <Route path="/" element={<>
+                        <Route path="/home" element={<>
                             <Row>
                                 {arr}
 
