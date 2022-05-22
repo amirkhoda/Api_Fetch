@@ -11,6 +11,7 @@ import 'react-edit-text/dist/index.css';
 import About from './About';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Setting from './Setting';
 
 
 
@@ -193,6 +194,11 @@ function Data(props) {
                     <Routes>
                         <Route path="/about" element={<About />} />
                     </Routes>
+                    
+                     <Routes>
+                        <Route path="/setting" element={<Setting />} />
+                    </Routes>
+
 
 
                 </Container>
