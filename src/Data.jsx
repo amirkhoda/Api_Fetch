@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { Button, Nav, Container, Navbar, NavDropdown, Form, FormControl, Card, Col, Row } from 'react-bootstrap'
-import { CardColumns, CardFooter, CardText, CardTitle, Jumbotron } from 'reactstrap'
+import { Nav, Navbar, FormControl, Card, Row } from 'react-bootstrap'
+import { Modal, ModalFooter, ModalHeader, ModalBody, Form, FormGroup, Input, Button, Container, Col, CardTitle, CardFooter, Jumbotron, Label } from 'reactstrap'
 import { faHeart, faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Footer from './Footer';
@@ -12,13 +12,20 @@ import About from './About';
 import { Link } from 'react-router-dom';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Setting from './Setting';
+import './App.css';
+
 
 
 
 function Data(props) {
     const [data, setData] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
+    const [isopen, setIsopen] = useState(false)
+    // Modal open state
+    const [modal, setModal] = React.useState(false);
 
+    // Toggle for Modal
+    const toggle = () => setModal(!modal);
 
     function MouseEnter(event) {
         event.target.style.color = '#ea4c89';
@@ -27,10 +34,29 @@ function Data(props) {
         event.target.style.color = "#BAB9B9";
     }
 
+    function MouseEnterr(e){
+        e.target.style.backgroundColor='#ea4c89'
+    }
+    function MouseLeavee(e){
+        e.target.style.backgroundColor='#BAB9B9'
+        
+    }
+    function MouseEnterrr(e){
+        e.target.style.backgroundColor='#000000'
+    }
+
+
+
+    function MouseLeaveee(e){
+        e.target.style.backgroundColor='#BAB9B9'
+        
+    }
+    
+
 
 
     useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('http://localhost:5000/posts')
             .then(res => {
                 console.log("Done", res.data)
                 setData(res.data)
@@ -132,30 +158,30 @@ function Data(props) {
                             <Nav className="me-auto">
 
                                 <Nav.Link>
-                                    <Link to="/home" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Home</Link>
+                                    <Link to="/home" style={{ color: "inherit", textDecoration: "none" }} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Home</Link>
                                 </Nav.Link>
 
                                 <Nav.Link >
-                                    <Link to="/setting" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Setting</Link>
+                                    <Link to="/setting" style={{ color: "inherit", textDecoration: "none" }} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>Setting</Link>
                                 </Nav.Link>
 
                                 <Nav.Link>
-                                    <Link to="/about" style={{color:"inherit",textDecoration:"none"}} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>About</Link>
+                                    <Link to="/about" style={{ color: "inherit", textDecoration: "none" }} onMouseEnter={MouseEnter} onMouseLeave={MouseLeave}>About</Link>
                                 </Nav.Link>
 
                             </Nav>
-                            <Form className="d-flex">
+                            <Form className="d-flex" style={{ marginRight: "4rem" }}>
                                 <FormControl
                                     type="search"
                                     placeholder="Search"
-                                    className="me-2"
+                                    className="me-5 "
                                     aria-label="Search"
                                     onChange={(event) => {
                                         setSearchTerm((event.target.value));
                                     }}
                                 />
 
-                                <Button style={{ border: 'none', backgroundColor: "#ea4c89" }}>Search</Button>
+                                <Button onClick={toggle} style={{ border: 'none', backgroundColor: "#ea4c89", marginRight: "2rem", marginLeft: "4rem" }}>Login</Button>
                             </Form>
                         </Navbar.Collapse>
                     </Container>
@@ -175,27 +201,61 @@ function Data(props) {
                     </p>
                 </Jumbotron>
 
+                <Modal contentClassName="bg-dark" isOpen={modal} toggle={toggle} >
+                    <ModalHeader className="text-white">Sample Modal Title</ModalHeader>
+                    <ModalBody>
+                        <Form className="form">
+                            <FormGroup>
+                                <Label className="text-white mb-2" for="exampleEmail">Username</Label>
+                                <Input
+                                    type="email"
+                                    name="email"
+                                    id="exampleEmail"
+                                    placeholder="Enter Your Email"
+                                />
+                            </FormGroup>
+                            <FormGroup className="mt-4">
+                                <Label className="text-white mb-2" for="examplePassword">Password</Label>
+                                <Input
+                                    type="password"
+                                    name="password"
+                                    id="examplePassword"
+                                    placeholder="Enter Your Password"
+                                />
+                                <Label  className="text-white mt-2" ><a href="">Forget Password?</a></Label>
+                            </FormGroup>
+                            <Button className="text-white"style={{ backgroundColor: "#ea4c89", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}>Submit</Button>
+                            
+                            <Button onMouseEnter={MouseEnterrr} onMouseLeave={MouseLeaveee} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/GitHub.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With Google</Button>
+                            <Button onMouseEnter={MouseEnterrr} onMouseLeave={MouseLeaveee} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/google.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With GitHub</Button>
+                           
+                        </Form>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onMouseEnter={MouseEnterr} onMouseLeave={MouseLeavee} style={{backgroundColor:"#BAB9B9"}} onClick={toggle}>Okay</Button>
+                    </ModalFooter>
+                </Modal>
 
 
-               
+
 
 
                 <Container>
 
-                    <Routes>
+                    <Routes> 
                         <Route path="/home" element={<>
                             <Row>
                                 {arr}
 
                             </Row>
-                        </>}/>
+                        </>} />
                     </Routes>
 
                     <Routes>
                         <Route path="/about" element={<About />} />
                     </Routes>
-                    
-                     <Routes>
+
+                    <Routes>
                         <Route path="/setting" element={<Setting />} />
                     </Routes>
 
