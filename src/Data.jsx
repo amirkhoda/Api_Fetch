@@ -27,6 +27,7 @@ function Data(props) {
     // Toggle for Modal
     const toggle = () => setModal(!modal);
 
+
     function MouseEnter(event) {
         event.target.style.color = '#ea4c89';
     }
@@ -34,23 +35,35 @@ function Data(props) {
         event.target.style.color = "#BAB9B9";
     }
 
-    function MouseEnterr(e){
+
+
+    function MouseEnterFooterModal(e){
         e.target.style.backgroundColor='#ea4c89'
     }
-    function MouseLeavee(e){
+    function MouseLeaveFpoterModal(e){
         e.target.style.backgroundColor='#BAB9B9'
         
     }
-    function MouseEnterrr(e){
+
+
+    function MouseEnterrModal(e){
         e.target.style.backgroundColor='#000000'
     }
 
-
-
-    function MouseLeaveee(e){
+    function MouseLeaveModal(e){
         e.target.style.backgroundColor='#BAB9B9'
         
     }
+
+
+     function MouseEnterSubmit(e){
+        e.target.style.width = "29rem"
+
+    }
+    
+    function MouseLeaveSubmit(e){
+        e.target.style.width = "5rem"
+    } 
     
 
 
@@ -224,15 +237,16 @@ function Data(props) {
                                 />
                                 <Label  className="text-white mt-2" ><a href="">Forget Password?</a></Label>
                             </FormGroup>
-                            <Button className="text-white"style={{ backgroundColor: "#ea4c89", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}>Submit</Button>
-                            
-                            <Button onMouseEnter={MouseEnterrr} onMouseLeave={MouseLeaveee} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/GitHub.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With Google</Button>
-                            <Button onMouseEnter={MouseEnterrr} onMouseLeave={MouseLeaveee} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/google.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With GitHub</Button>
+                            <div class="text-center">
+                            <Button onMouseEnter={MouseEnterSubmit} onMouseLeave={MouseLeaveSubmit} className="text-white "style={{ backgroundColor: "#ea4c89", border: "none" , marginTop:"2rem",width:"5rem",height:"3rem",borderRadius:"15px" }}>Submit</Button>
+                            </div>
+                            <Button onMouseEnter={MouseEnterrModal} onMouseLeave={MouseLeaveModal} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/GitHub.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With Google</Button>
+                            <Button onMouseEnter={MouseEnterrModal} onMouseLeave={MouseLeaveModal} className="text-white"style={{ backgroundColor: "#BAB9B9", border: "none" , marginTop:"2rem",width:"29rem",height:"3rem" }}><img src="../assets/google.png" style={{height:"2rem",marginRight:"1rem"}}/>  Sign in With GitHub</Button>
                            
                         </Form>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onMouseEnter={MouseEnterr} onMouseLeave={MouseLeavee} style={{backgroundColor:"#BAB9B9"}} onClick={toggle}>Okay</Button>
+                        <Button onMouseEnter={MouseEnterFooterModal} onMouseLeave={MouseLeaveFpoterModal} style={{backgroundColor:"#BAB9B9"}} onClick={toggle}>Okay</Button>
                     </ModalFooter>
                 </Modal>
 
