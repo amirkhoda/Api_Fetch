@@ -16,6 +16,7 @@ import './App.css';
 import LoginModal from './LoginModal';
 import SignUp from './SignUp';
 import { height } from 'dom-helpers';
+import MyModal from './MyModal';
 
 
 
@@ -25,13 +26,14 @@ function Data(props) {
     const [searchTerm, setSearchTerm] = useState('')
     // Modal open state
     const [modal, setModal] = useState(false);
+    const [modalShow, setModalShow] = useState(false);
 
     // Toggle for Modal
     const toggle = () => setModal(!modal);
 
 
-    const ShowSignUp = () =>{
-        <SignUp/>
+    const ShowSignUp = () => {
+        <SignUp />
 
     }
 
@@ -43,13 +45,7 @@ function Data(props) {
     }
 
 
-    function MouseEnterFooterModal(e){
-        e.target.style.backgroundColor='#ea4c89'
-    }
-    function MouseLeaveFpoterModal(e){
-        e.target.style.backgroundColor='#BAB9B9'
-        
-    }
+
 
 
 
@@ -180,7 +176,7 @@ function Data(props) {
                                     }}
                                 />
 
-                                <Button onClick={toggle} style={{ border: 'none', backgroundColor: "#ea4c89", marginRight: "2rem", marginLeft: "4rem" }}>Login</Button>
+                                <Button onClick={() => { setModalShow(true) }} style={{ border: 'none', backgroundColor: "#ea4c89", marginRight: "2rem", marginLeft: "4rem" }}>Login</Button>
                             </Form>
                         </Navbar.Collapse>
                     </Container>
@@ -200,26 +196,15 @@ function Data(props) {
                     </p>
                 </Jumbotron>
 
-                <Modal contentClassName="bg-dark" isOpen={modal} toggle={toggle} >
-                    <ModalHeader className="text-white">
-                        <Button style={{marginLeft:"2rem", color: "inherit", textDecoration: "none" }}>Login</Button>          
-                        <Button style={{ marginLeft:"15rem", color: "inherit", textDecoration: "none"  }} onClick={ShowSignUp}>SignUp</Button>
-                    </ModalHeader>
-                    <ModalBody>
-                        <LoginModal/>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button onMouseEnter={MouseEnterFooterModal} onMouseLeave={MouseLeaveFpoterModal} style={{backgroundColor:"#BAB9B9"}} onClick={toggle}>Okay</Button>
-                    </ModalFooter>
-                </Modal>
 
-                
 
+
+                <MyModal show={modalShow} onHide={() => { setModalShow(false) }} />
 
 
                 <Container>
 
-                    <Routes> 
+                    <Routes>
                         <Route path="/home" element={<>
                             <Row>
                                 {arr}
@@ -235,7 +220,7 @@ function Data(props) {
                     <Routes>
                         <Route path="/setting" element={<Setting />} />
                     </Routes>
-                    
+
 
 
 
