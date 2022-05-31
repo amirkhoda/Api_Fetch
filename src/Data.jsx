@@ -23,19 +23,9 @@ import MyModal from './MyModal';
 
 function Data(props) {
     const [data, setData] = useState([])
-    const [searchTerm, setSearchTerm] = useState('')
-    // Modal open state
-    const [modal, setModal] = useState(false);
+    const [searchTerm, setSearchTerm] = useState('') 
     const [modalShow, setModalShow] = useState(false);
 
-    // Toggle for Modal
-    const toggle = () => setModal(!modal);
-
-
-    const ShowSignUp = () => {
-        <SignUp />
-
-    }
 
     function MouseEnter(event) {
         event.target.style.color = '#ea4c89';
@@ -195,15 +185,9 @@ function Data(props) {
                         <Button className="mb-3" style={{ backgroundColor: "#ea4c89", border: "none" }}>Learn More</Button>
                     </p>
                 </Jumbotron>
-
-
-
-
                 <MyModal show={modalShow} onHide={() => { setModalShow(false) }} />
 
-
                 <Container>
-
                     <Routes>
                         <Route path="/home" element={<>
                             <Row>
@@ -220,12 +204,7 @@ function Data(props) {
                     <Routes>
                         <Route path="/setting" element={<Setting />} />
                     </Routes>
-
-
-
-
                 </Container>
-
                 <Footer />
             </div>
 
