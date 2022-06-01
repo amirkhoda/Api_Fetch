@@ -23,3 +23,12 @@ html {
     left: 0
 }
 
+.blackButton{
+    background-color: black;
+    color: white;
+  }
+  
+  .whiteButton{
+    background-color: white;
+    color: black;
+  }
