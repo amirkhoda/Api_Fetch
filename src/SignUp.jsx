@@ -23,26 +23,47 @@ function SignUp() {
     return (
         <div>
             <Form className="form">
+                //name
                 <FormGroup>
-                    <Label className="text-white mb-2" for="exampleEmail">Username</Label>
-                    <Input         
-                        id="exampleEmail"
-                        placeholder="Enter Your Email"
+                    <Label className="text-white mb-2" >Name</Label>
+                    <Input               
+                        placeholder="Enter Your Name"
                     />
-                     <Input
-                        id="exampleEmail"
+                </FormGroup>
+                //lastName
+                <FormGroup >
+                    <Label className="text-white mb-2">LastName</Label>
+                    <Input         
+                        placeholder="Enter Your LastName"
+                    />
+                </FormGroup>
+                //email
+                <FormGroup>
+                    <Label className="text-white mb-2">Email</Label>
+                    <Input
                         placeholder="Enter Your Email"
                     />
                 </FormGroup>
-                <FormGroup className="mt-4">
-                    <Label className="text-white mb-2" for="examplePassword">Password</Label>
+                //phone
+                <FormGroup>
+                <Label className="text-white mb-2" >Phone</Label>
+                    <Input             
+                        placeholder="Enter Your Phone: +98"
+                    />
+                </FormGroup>
+                //username
+                <FormGroup>
+                    <Label className="text-white mb-2" >UserName</Label>
                     <Input
-                        type="password"
-                        name="password"
-                        id="examplePassword"
+                        placeholder="Enter Your UserName"
+                    />
+                </FormGroup>
+                //password
+                <FormGroup >
+                    <Label className="text-white mb-2" >Password</Label>
+                    <Input
                         placeholder="Enter Your Password"
                     />
-                    <Label className="text-white mt-2" ><a href="">Forget Password?</a></Label>
                 </FormGroup>
                 
                     <form style={{marginTop:"2rem"}}>
