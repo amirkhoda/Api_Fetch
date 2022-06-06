@@ -46,9 +46,7 @@ function MyModal(props) {
             <ModalBody>
                 {showLoginModal()}
             </ModalBody>
-            <ModalFooter>
-                <Button onMouseEnter={MouseEnterFooterModal} onMouseLeave={MouseLeaveFpoterModal} style={{ backgroundColor: "#BAB9B9",border:"none" }} onClick={props.onHide}>Okay</Button>
-            </ModalFooter>
+            
         </Modal>
     )
 }

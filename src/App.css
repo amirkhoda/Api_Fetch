@@ -32,3 +32,8 @@ html {
     background-color: white;
     color: black;
   }
+
+  input::placeholder{
+    font-size: 14px;
+
+  }
