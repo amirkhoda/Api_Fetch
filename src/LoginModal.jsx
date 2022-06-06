@@ -46,6 +46,11 @@ function LoginModal() {
                 <div class="text-center">
                     <Button onMouseEnter={MouseEnterSubmit} onMouseLeave={MouseLeaveSubmit} className="text-white " style={{ backgroundColor: "#ea4c89", border: "none", marginTop: "2rem", width: "5rem", height: "3rem", borderRadius: "15px" }}>Submit</Button>
                 </div>
+                <div style={{marginTop:"1rem"}}>
+                    <hr className="text-white" style={{width:"40%",display:"inline-block" , float:"left",backgroundColor:"#ea4c89"}} />
+                    <hr className="text-white" style={{ width:"40%", display:"inline-block",float:"right",backgroundColor:"#ea4c89"}} />
+                    <span style={{paddingLeft:"2.5rem",color:"#ea4c89"}} >Or</span>
+                </div>
                 <Button onMouseEnter={MouseEnterrModal} onMouseLeave={MouseLeaveModal} className="text-white" style={{ backgroundColor: "#BAB9B9", border: "none", marginTop: "2rem", width: "29rem", height: "3rem" }}><img src="../assets/GitHub.png" style={{ height: "2rem", marginRight: "1rem" }} />  Sign in With Google</Button>
                 <Button onMouseEnter={MouseEnterrModal} onMouseLeave={MouseLeaveModal} className="text-white" style={{ backgroundColor: "#BAB9B9", border: "none", marginTop: "2rem", width: "29rem", height: "3rem" }}><img src="../assets/google.png" style={{ height: "2rem", marginRight: "1rem" }} />  Sign in With GitHub</Button>
 
